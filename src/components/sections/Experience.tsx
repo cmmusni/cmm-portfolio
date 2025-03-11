@@ -178,10 +178,10 @@ const experienceCategories = [
   {
     title: "Full Stack Dev",
     icon: <FaNodeJs />,
-    company: "Netwelve LLC",
+    company: "Different Clients",
     hiredDate: "Mar 2024",
     terminationDate: undefined,
-    country: "USA",
+    country: "USA, UK, Thailand",
     isFullTime: false,
   },
 ];
@@ -244,14 +244,13 @@ const Experiences = () => {
               </CategoryTitle>
               <ExperienceCompany>{category.company}</ExperienceCompany>
               <ExperienceJobType>
-                {category.isFullTime ? "Full-time" : "Part-time"}
+                {category.isFullTime ? "Full-time" : "Freelance"}
               </ExperienceJobType>
-              <ExperienceDuration>{`${category.hiredDate} - ${
-                category.terminationDate || "Present"
-              } · ${computeDateDuration(
-                category.hiredDate,
-                category.terminationDate
-              )}`}</ExperienceDuration>
+              <ExperienceDuration>{`${category.hiredDate} - ${category.terminationDate || "Present"
+                } · ${computeDateDuration(
+                  category.hiredDate,
+                  category.terminationDate
+                )}`}</ExperienceDuration>
               <ExperienceCountry>{category.country}</ExperienceCountry>
             </ExperienceCategory>
           ))}
