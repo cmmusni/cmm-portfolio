@@ -257,7 +257,7 @@ const Experiences = () => {
         </ExperiencesContainer>
         <ExperiencesCVContainer>
           <ContactEmail
-            href="https://drive.google.com/file/d/14Eo0fqeTCE0oTiZ--UpkXs7Xaw0nB8Wp/view?usp=drive_link"
+            href="https://drive.google.com/file/d/13h-aEPaO1zvFSZAJBvLiGhzVvaWOqQbY/view"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

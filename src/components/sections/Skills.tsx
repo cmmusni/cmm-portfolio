@@ -8,6 +8,7 @@ import {
   FaDocker,
   FaGitAlt,
   FaMicrosoft,
+  FaAws,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -16,6 +17,10 @@ import {
   SiSupabase,
   SiPostgresql,
   SiRedux,
+  SiDjango,
+  SiShopify,
+  SiPrisma,
+  SiRailway,
 } from "react-icons/si";
 
 const SkillsSection = styled.section`
@@ -156,10 +161,12 @@ const skillCategories = [
     title: "Frontend",
     icon: <FaReact />,
     skills: [
-      { name: "React", icon: <FaReact /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "React/Native", icon: <FaReact /> },
+      { name: "NextJS", icon: <SiTypescript /> },
       { name: "JavaScript", icon: <SiJavascript /> },
       { name: "Redux", icon: <SiRedux /> },
+      { name: "Django", icon: <SiDjango /> },
+      { name: "Shopify", icon: <SiShopify /> },
     ],
   },
   {
@@ -167,8 +174,10 @@ const skillCategories = [
     icon: <FaNodeJs />,
     skills: [
       { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "Es6", icon: <FaNodeJs /> },
       { name: "Python", icon: <SiPython /> },
       { name: "Supabase", icon: <SiSupabase /> },
+      { name: "Prisma", icon: <SiPrisma /> },
       { name: "PostgreSQL", icon: <SiPostgresql /> },
     ],
   },
@@ -176,9 +185,11 @@ const skillCategories = [
     title: "DevOps",
     icon: <FaDocker />,
     skills: [
-      { name: "Docker", icon: <FaDocker /> },
       { name: "Git", icon: <FaGitAlt /> },
       { name: "Azure", icon: <FaMicrosoft /> },
+      { name: "AWS", icon: <FaAws /> },
+      { name: "Railway", icon: <SiRailway /> },
+      { name: "Docker", icon: <FaDocker /> },
       { name: "CI/CD", icon: <FaDatabase /> },
     ],
   },

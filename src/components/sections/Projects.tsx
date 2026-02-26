@@ -6,6 +6,9 @@ import MemeGen from "../../assets/memegen.png";
 import AGTGChurch from "../../assets/agtg-church.png";
 import IPLabs from "../../assets/ip-labs.png";
 import AppTechAnalysis from "../../assets/app-tech-analysis.png";
+import PusoSpaze from "../../assets/puso-spaze.png";
+import Portionist from "../../assets/portionist.png";
+import BrandMonitoring from "../../assets/brand-monitoring.png";
 
 const ProjectsSection = styled.section`
   min-height: 100vh;
@@ -186,6 +189,33 @@ const ProjectLinks = styled.div`
 const projects = [
   {
     id: 1,
+    title: "PUSO Spaze",
+    description: "An AI-moderated anonymous community platform focused on psychological safety, positive reinforcement, and faith-based engagement.",
+    image: PusoSpaze,
+    techStack: ["React Native", "TypeScript", "NativeWind", "Express", "Prisma ORM", "OpenAI API"],
+    githubUrl: "https://github.com/cmmusni/puso-spaze",
+    liveUrl: "https://www.puso-spaze.org/overview/index.html",
+  },
+  {
+    id: 2,
+    title: "Portionist",
+    description: "AI-Powered Meal Planning & Nutrition Tracking Platform",
+    image: Portionist,
+    techStack: ["React Native", "Express", "PostgreSQL", "Google Gemini LLM", "Spoonacular API"],
+    githubUrl: "https://github.com/cmmusni/portionist",
+    liveUrl: "https://portionist.netlify.app/overview/index.html",
+  },
+  {
+    id: 3,
+    title: "Brand Monitoring",
+    description: "A platform for monitoring brand presence and reputation online.",
+    image: BrandMonitoring,
+    techStack: ["NextJS", "Tailwind", "Shadcn UI"],
+    githubUrl: "https://github.com/sparklab-llc/brand-monitoring",
+    liveUrl: "https://sparklab-brand-monitoring.vercel.app/",
+  },
+  {
+    id: 4,
     title: "All Glory to God Church Website",
     description: "A full-stack website for our church",
     image: AGTGChurch,
@@ -194,7 +224,7 @@ const projects = [
     liveUrl: "https://agtg-church.netlify.app",
   },
   {
-    id: 2,
+    id: 5,
     title: "MemeGen",
     description:
       "A fun e-commerce platform where users can choose a product and personalize it with a meme.",
@@ -204,7 +234,7 @@ const projects = [
     liveUrl: "https://meme-products.netlify.app",
   },
   {
-    id: 3,
+    id: 6,
     title: "IP Labs",
     description:
       "A front-end web application that analyze media content for trends, copyright compliance, or usage statistics.",
@@ -214,7 +244,7 @@ const projects = [
     liveUrl: "https://iplabs.netlify.app/",
   },
   {
-    id: 4,
+    id: 7,
     title: "App Tech Analysis",
     description:
       "A front-end web applicaition that track app performance, downloads, and market trends across different app stores.",
