@@ -136,7 +136,7 @@ export const Hero = () => {
               Hi, I'm Clifford
             </Title>
             <Subtitle role="heading" aria-level={3}>
-              Web App Developer
+              Web App Engineer
             </Subtitle>
             <Description role="paragraph">
               I build intuitive and efficient web applications, blending clean
