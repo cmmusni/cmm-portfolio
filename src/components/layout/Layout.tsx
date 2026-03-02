@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { theme } from "../../styles/theme";
 import { FloatingNav } from "../navigation/FloatingNav";
 import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
@@ -85,6 +85,8 @@ const Header = styled.header`
 `;
 
 const Nav = styled.nav`
+  position: relative;
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -132,7 +134,76 @@ const NavLinks = styled.div`
   }
 
   @media (max-width: ${theme.breakpoints.sm}) {
-    gap: ${theme.spacing.md};
+    gap: ${theme.spacing.sm};
+  }
+`;
+
+const DesktopNavLinks = styled(NavLinks)`
+  @media (max-width: ${theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
+const MobileNavLinks = styled(NavLinks)`
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.xs};
+  width: 100%;
+
+  a {
+    display: block;
+    width: 100%;
+    padding: ${theme.spacing.sm};
+    border-radius: 8px;
+  }
+`;
+
+const MenuToggle = styled.button`
+  display: none;
+  color: ${theme.colors.textLight};
+  background: ${theme.colors.glass.card};
+  border: 1px solid ${theme.colors.glass.border};
+  border-radius: 10px;
+  padding: ${theme.spacing.xs} ${theme.spacing.sm};
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: all ${theme.transitions.default};
+
+  &:hover {
+    color: ${theme.colors.light};
+    border-color: ${theme.colors.accent};
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${theme.colors.accent};
+    outline-offset: 2px;
+  }
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const MobileNavPanel = styled.div<{ isOpen: boolean }>`
+  @media (max-width: ${theme.breakpoints.md}) {
+    position: absolute;
+    top: calc(100% + ${theme.spacing.sm});
+    right: 5%;
+    width: min(240px, 92vw);
+    background: ${theme.colors.glass.background};
+    border: 1px solid ${theme.colors.glass.border};
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    padding: ${theme.spacing.sm};
+    box-shadow: 0 10px 24px ${theme.colors.overlay.dark};
+    display: ${(props) => (props.isOpen ? "block" : "none")};
+    z-index: 1001;
+  }
+
+  @media (min-width: calc(${theme.breakpoints.md} + 1px)) {
+    display: none;
   }
 `;
 
@@ -182,6 +253,7 @@ const Footer = styled.footer`
 
 export const Layout = ({ children }: LayoutProps) => {
   useKeyboardNavigation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Add keyboard navigation instructions to console
@@ -192,6 +264,19 @@ export const Layout = ({ children }: LayoutProps) => {
       "- End: Go to bottom"
     );
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMobileMenuOpen]);
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <LayoutWrapper>
@@ -211,9 +296,9 @@ export const Layout = ({ children }: LayoutProps) => {
               Portfolio
             </Logo>
 
-            <NavLinks role="list">
-              <a href="#about" role="listitem" aria-label="About section">
-                About
+            <DesktopNavLinks role="list" aria-label="Desktop navigation">
+              <a href="#hero" role="listitem" aria-label="Home section">
+                Home
               </a>
               <a href="#projects" role="listitem" aria-label="Projects section">
                 Projects
@@ -231,7 +316,62 @@ export const Layout = ({ children }: LayoutProps) => {
               <a href="#contact" role="listitem" aria-label="Contact section">
                 Contact
               </a>
-            </NavLinks>
+            </DesktopNavLinks>
+
+            <MenuToggle
+              type="button"
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-nav-panel"
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            >
+              {isMobileMenuOpen ? "✕" : "☰"}
+            </MenuToggle>
+
+            <MobileNavPanel id="mobile-nav-panel" isOpen={isMobileMenuOpen}>
+              <MobileNavLinks role="list" aria-label="Mobile navigation">
+                <a
+                  href="#hero"
+                  role="listitem"
+                  aria-label="Home section"
+                  onClick={closeMobileMenu}
+                >
+                  Home
+                </a>
+                <a
+                  href="#projects"
+                  role="listitem"
+                  aria-label="Projects section"
+                  onClick={closeMobileMenu}
+                >
+                  Projects
+                </a>
+                <a
+                  href="#skills"
+                  role="listitem"
+                  aria-label="Skills section"
+                  onClick={closeMobileMenu}
+                >
+                  Skills
+                </a>
+                <a
+                  href="#experiences"
+                  role="listitem"
+                  aria-label="Experience section"
+                  onClick={closeMobileMenu}
+                >
+                  Work Experience
+                </a>
+                <a
+                  href="#contact"
+                  role="listitem"
+                  aria-label="Contact section"
+                  onClick={closeMobileMenu}
+                >
+                  Contact
+                </a>
+              </MobileNavLinks>
+            </MobileNavPanel>
           </div>
         </Nav>
       </Header>

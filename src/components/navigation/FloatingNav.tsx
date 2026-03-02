@@ -23,6 +23,10 @@ const NavContainer = styled(motion.nav)`
     display: none;
   }
 
+  @media (max-width: ${theme.breakpoints.md}) {
+    display: none;
+  }
+
   @media (max-width: ${theme.breakpoints.sm}) {
     right: ${theme.spacing.sm};
     padding: ${theme.spacing.md};
