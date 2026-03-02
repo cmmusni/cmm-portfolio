@@ -160,7 +160,7 @@ const TechTag = styled.span`
     background: ${theme.colors.gradient.accent};
     color: ${theme.colors.textDark};
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(246, 177, 122, 0.2);
+    box-shadow: 0 4px 12px ${theme.colors.overlay.light};
   }
 `;
 
@@ -190,9 +190,17 @@ const projects = [
   {
     id: 1,
     title: "PUSO Spaze",
-    description: "An AI-moderated anonymous community platform focused on psychological safety, positive reinforcement, and faith-based engagement.",
+    description:
+      "An AI-moderated anonymous community platform focused on psychological safety, positive reinforcement, and faith-based engagement.",
     image: PusoSpaze,
-    techStack: ["React Native", "TypeScript", "NativeWind", "Express", "Prisma ORM", "OpenAI API"],
+    techStack: [
+      "React Native",
+      "TypeScript",
+      "NativeWind",
+      "Express",
+      "Prisma ORM",
+      "OpenAI API",
+    ],
     githubUrl: "https://github.com/cmmusni/puso-spaze",
     liveUrl: "https://www.puso-spaze.org/overview/index.html",
   },
@@ -201,18 +209,25 @@ const projects = [
     title: "Portionist",
     description: "AI-Powered Meal Planning & Nutrition Tracking Platform",
     image: Portionist,
-    techStack: ["React Native", "Express", "PostgreSQL", "Google Gemini LLM", "Spoonacular API"],
+    techStack: [
+      "React Native",
+      "Express",
+      "PostgreSQL",
+      "Google Gemini LLM",
+      "Spoonacular API",
+    ],
     githubUrl: "https://github.com/cmmusni/portionist",
     liveUrl: "https://portionist.netlify.app/overview/index.html",
   },
   {
     id: 3,
     title: "Brand Monitoring",
-    description: "A platform for monitoring brand presence and reputation online.",
+    description:
+      "A platform for monitoring brand presence and reputation online.",
     image: BrandMonitoring,
     techStack: ["NextJS", "Tailwind", "Shadcn UI"],
     githubUrl: "https://github.com/sparklab-llc/brand-monitoring",
-    liveUrl: "https://sparklab-brand-monitoring.vercel.app/",
+    liveUrl: "https://brand-monitoring-git-dasboard-and-pages-sparklabllc.vercel.app/",
   },
   {
     id: 4,
@@ -308,6 +323,8 @@ const Projects = () => {
                   imageUrl={project.image}
                   role="img"
                   aria-label={`Screenshot of ${project.title}`}
+                  onClick={() => window.open(project.liveUrl, "_blank")}
+                  style={{ cursor: 'pointer'}}
                 />
                 <ProjectContent>
                   <ProjectTitle id={`project-title-${project.id}`}>

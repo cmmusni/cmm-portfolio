@@ -1,32 +1,32 @@
 export const theme = {
   colors: {
-    primary: "#2A2D3E",
-    secondary: "#454964",
-    accent: "#F6B17A",
-    light: "#F6B17A",
-    text: "#ffffff",
-    textLight: "#ffffff",
-    textDark: "#424242",
+    primary: "#62BE6A",
+    secondary: "#3F8F53",
+    accent: "#F3AE45",
+    light: "#8AD893",
+    text: "#F8FAFC",
+    textLight: "#E5E7EB",
+    textDark: "#F8FAFC",
     body: {
-      background: "cadetblue",
+      background: "linear-gradient(160deg, #3A3C40 0%, #43454A 55%, #2F3136 100%)",
     },
     container: {
-      main: "rgba(255, 255, 255, 0.05)",
+      main: "rgba(47, 49, 54, 0.72)",
     },
     glass: {
-      background: "rgba(255, 255, 255, 0.05)",
-      border: "transparent",
-      card: "rgba(42, 45, 62, 0.2)",
+      background: "rgba(58, 60, 64, 0.58)",
+      border: "rgba(138, 216, 147, 0.28)",
+      card: "rgba(98, 190, 106, 0.18)",
     },
     gradient: {
-      main: "linear-gradient(135deg, #2A2D3E 0%, #454964 50%, #2A2D3E 100%)",
-      accent: "linear-gradient(135deg, #F6B17A 0%, #f8c396 100%)",
+      main: "linear-gradient(135deg, #3A3C40 0%, #43454A 50%, #2F3136 100%)",
+      accent: "linear-gradient(135deg, #F3AE45 0%, #FFD07A 100%)",
       glass:
         "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)",
     },
     overlay: {
-      light: "rgba(255, 255, 255, 0.1)",
-      dark: "rgba(42, 45, 62, 0.3)",
+      light: "rgba(243, 174, 69, 0.25)",
+      dark: "rgba(31, 35, 39, 0.5)",
     },
   },
   fonts: {

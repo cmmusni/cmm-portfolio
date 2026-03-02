@@ -113,7 +113,7 @@ const SocialLinks = styled.div`
       color: ${theme.colors.light};
       transform: translateY(-3px);
       background: ${theme.colors.glass.card};
-      box-shadow: 0 4px 12px rgba(246, 177, 122, 0.2);
+      box-shadow: 0 4px 12px ${theme.colors.overlay.light};
     }
   }
 

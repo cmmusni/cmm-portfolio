@@ -147,7 +147,7 @@ const SkillItem = styled(motion.div)`
   &:hover {
     background: ${theme.colors.gradient.glass};
     transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(246, 177, 122, 0.2);
+    box-shadow: 0 4px 12px ${theme.colors.overlay.light};
 
     svg {
       transform: scale(1.1) rotate(5deg);

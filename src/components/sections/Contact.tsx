@@ -141,7 +141,7 @@ const SocialLink = styled(motion.a)`
   justify-content: center;
   border-radius: 50%;
   background: ${theme.colors.glass.card};
-  box-shadow: 0 4px 12px rgba(246, 177, 122, 0.1);
+  box-shadow: 0 4px 12px ${theme.colors.overlay.light};
 
   @media (min-width: ${theme.breakpoints.md}) {
     width: 60px;
@@ -152,7 +152,7 @@ const SocialLink = styled(motion.a)`
   &:hover {
     color: ${theme.colors.light};
     transform: translateY(-3px) rotate(8deg);
-    box-shadow: 0 6px 16px rgba(246, 177, 122, 0.2);
+    box-shadow: 0 6px 16px ${theme.colors.overlay.light};
     background: ${theme.colors.gradient.glass};
   }
 `;
