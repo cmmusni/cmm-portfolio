@@ -163,9 +163,12 @@ const MenuToggle = styled.button`
   color: ${theme.colors.textLight};
   background: ${theme.colors.glass.card};
   border: 1px solid ${theme.colors.glass.border};
-  border-radius: 10px;
   padding: ${theme.spacing.xs} ${theme.spacing.sm};
-  font-size: 1.1rem;
+  border-radius: 12px;
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 1.5rem !important;
+  font-weight: 600;
   line-height: 1;
   transition: all ${theme.transitions.default};
 
@@ -183,6 +186,12 @@ const MenuToggle = styled.button`
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.65rem;
   }
 `;
 
