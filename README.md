@@ -24,3 +24,26 @@ npm install
 
 Start the development server:
 npm run dev
+
+# 🔔 Device Access Notifications (Netlify + Email)
+
+This portfolio now supports email alerts when accessed from a new device.
+
+## How it works
+
+- The frontend creates a persistent device ID in local storage.
+- On first visit from that device, it calls a Netlify Function.
+- The function sends you an email via Resend.
+
+## Required Netlify environment variables
+
+- `RESEND_API_KEY` - your Resend API key
+- `ALERT_TO_EMAIL` - recipient email address
+- `ALERT_FROM_EMAIL` - sender (example: `Portfolio Alerts <onboarding@resend.dev>`)
+- `ALERT_SUBJECT_PREFIX` (optional) - subject prefix like `CMM Portfolio`
+
+## Notes
+
+- This sends once per device/browser profile.
+- Clearing local storage can trigger another alert from the same device.
+- In local development, Netlify Functions require `netlify dev` to run serverless endpoints.

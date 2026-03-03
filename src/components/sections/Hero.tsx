@@ -80,6 +80,7 @@ const Subtitle = styled.h2`
   margin-bottom: ${theme.spacing.lg};
   opacity: 0.9;
   font-weight: 500;
+  color: ${theme.colors.accent};
 `;
 
 const Description = styled.p`

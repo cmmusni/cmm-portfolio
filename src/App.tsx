@@ -5,6 +5,7 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "./styles/theme";
 import styled from "@emotion/styled";
+import { useDeviceAccessAlert } from "./hooks/useDeviceAccessAlert";
 
 // Lazy load non-critical components
 const Projects = lazy(() => import("./components/sections/Projects"));
@@ -29,6 +30,8 @@ const LoadingFallback = styled.div`
 `;
 
 function App() {
+  useDeviceAccessAlert();
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
