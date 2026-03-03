@@ -1,4 +1,20 @@
 const BOT_UA_REGEX = /bot|spider|crawler|headless/i;
+const SIMPLE_EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const clean = (value) => (typeof value === "string" ? value.trim() : "");
+
+const extractEmail = (value) => {
+  const normalized = clean(value).replace(/\s+/g, " ");
+  const bracketMatch = normalized.match(/<([^>]+)>/);
+
+  if (bracketMatch?.[1]) {
+    return bracketMatch[1].trim();
+  }
+
+  return normalized;
+};
+
+const isValidEmail = (value) => SIMPLE_EMAIL_REGEX.test(clean(value));
 
 const json = (statusCode, body) => ({
   statusCode,
@@ -13,13 +29,22 @@ exports.handler = async (event) => {
     return json(405, { error: "Method not allowed" });
   }
 
-  const resendApiKey = process.env.RESEND_API_KEY;
-  const alertToEmail = process.env.ALERT_TO_EMAIL;
-  const alertFromEmail =
-    process.env.ALERT_FROM_EMAIL || "Portfolio Alerts <onboarding@resend.dev>";
+  const resendApiKey = clean(process.env.RESEND_API_KEY);
+  const alertToEmail = clean(process.env.ALERT_TO_EMAIL);
+
+  const configuredFrom = clean(process.env.ALERT_FROM_EMAIL);
+  const configuredFromEmail = extractEmail(configuredFrom);
+
+  const alertFromEmail = isValidEmail(configuredFromEmail)
+    ? configuredFrom
+    : "Portfolio Alerts <onboarding@resend.dev>";
 
   if (!resendApiKey || !alertToEmail) {
     return json(500, { error: "Missing alert configuration" });
+  }
+
+  if (!isValidEmail(alertToEmail)) {
+    return json(500, { error: "ALERT_TO_EMAIL is invalid" });
   }
 
   try {
@@ -77,6 +102,7 @@ exports.handler = async (event) => {
       return json(502, {
         error: "Failed to send alert email",
         details: errorBody,
+        hint: "Check ALERT_FROM_EMAIL format and Resend verified sender domain.",
       });
     }
 

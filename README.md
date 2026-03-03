@@ -39,8 +39,10 @@ This portfolio now supports email alerts when accessed from a new device.
 
 - `RESEND_API_KEY` - your Resend API key
 - `ALERT_TO_EMAIL` - recipient email address
-- `ALERT_FROM_EMAIL` - sender (example: `Portfolio Alerts <onboarding@resend.dev>`)
+- `ALERT_FROM_EMAIL` - sender (example: `Portfolio Alerts <alerts@yourdomain.com>`)
 - `ALERT_SUBJECT_PREFIX` (optional) - subject prefix like `CMM Portfolio`
+
+`ALERT_FROM_EMAIL` must be a valid full email identity. Avoid incomplete values like `noreply@`.
 
 ## Notes
 
