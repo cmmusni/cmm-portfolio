@@ -8,6 +8,7 @@ import IPLabs from "../../assets/ip-labs.png";
 import AppTechAnalysis from "../../assets/app-tech-analysis.png";
 import PusoSpaze from "../../assets/puso-spaze.png";
 import Portionist from "../../assets/portionist.png";
+import Early7Cafe from "../../assets/early-7-cafe.png";
 import BrandMonitoring from "../../assets/brand-monitoring.png";
 
 const ProjectsSection = styled.section`
@@ -202,7 +203,7 @@ const projects = [
       "OpenAI API",
     ],
     githubUrl: "https://github.com/cmmusni/puso-spaze",
-    liveUrl: "https://www.puso-spaze.org/overview/index.html",
+    liveUrl: "https://www.puso-spaze.org",
   },
   {
     id: 2,
@@ -217,20 +218,39 @@ const projects = [
       "Spoonacular API",
     ],
     githubUrl: "https://github.com/cmmusni/portionist",
-    liveUrl: "https://portionist.netlify.app/overview/index.html",
+    liveUrl: "https://portionist.netlify.app",
   },
   {
     id: 3,
+    title: "Early 7 Cafe",
+    description:
+      "A pre-order and POS web app for a coffee shop, where customers can browse the menu, schedule pickup, and pay via cash, QRPh, or GCash, while admins can manage incoming orders and update statuses in real time.",
+    image: Early7Cafe,
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Express",
+      "PostgreSQL",
+      "Payment Workflow Integration",
+      "RBAC",
+      "DevOps",
+    ],
+    githubUrl: "https://github.com/cmmusni/early7cafe",
+    liveUrl: "https://early7cafe.vercel.app",
+  },
+  {
+    id: 4,
     title: "Brand Monitoring",
     description:
       "A platform for monitoring brand presence and reputation online.",
     image: BrandMonitoring,
     techStack: ["NextJS", "Tailwind", "Shadcn UI"],
     githubUrl: "https://github.com/sparklab-llc/brand-monitoring",
-    liveUrl: "https://brand-monitoring-git-dasboard-and-pages-sparklabllc.vercel.app/",
+    liveUrl:
+      "https://brand-monitoring-git-dasboard-and-pages-sparklabllc.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     title: "All Glory to God Church Website",
     description: "A full-stack website for our church",
     image: AGTGChurch,
@@ -239,7 +259,7 @@ const projects = [
     liveUrl: "https://agtg-church.netlify.app",
   },
   {
-    id: 5,
+    id: 6,
     title: "MemeGen",
     description:
       "A fun e-commerce platform where users can choose a product and personalize it with a meme.",
@@ -249,7 +269,7 @@ const projects = [
     liveUrl: "https://meme-products.netlify.app",
   },
   {
-    id: 6,
+    id: 7,
     title: "IP Labs",
     description:
       "A front-end web application that analyze media content for trends, copyright compliance, or usage statistics.",
@@ -259,7 +279,7 @@ const projects = [
     liveUrl: "https://iplabs.netlify.app/",
   },
   {
-    id: 7,
+    id: 8,
     title: "App Tech Analysis",
     description:
       "A front-end web applicaition that track app performance, downloads, and market trends across different app stores.",
@@ -324,7 +344,7 @@ const Projects = () => {
                   role="img"
                   aria-label={`Screenshot of ${project.title}`}
                   onClick={() => window.open(project.liveUrl, "_blank")}
-                  style={{ cursor: 'pointer'}}
+                  style={{ cursor: "pointer" }}
                 />
                 <ProjectContent>
                   <ProjectTitle id={`project-title-${project.id}`}>

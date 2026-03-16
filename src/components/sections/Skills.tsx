@@ -59,6 +59,16 @@ const SectionTitle = styled(motion.h2)`
   }
 `;
 
+const SectionSubtitle = styled(motion.p)`
+  max-width: 760px;
+  text-align: center;
+  color: ${theme.colors.textLight};
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.65;
+  margin: -${theme.spacing.md} 0 ${theme.spacing.xl};
+  opacity: 0.92;
+`;
+
 const SkillsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -77,7 +87,7 @@ const SkillCategory = styled(motion.div)`
   background: ${theme.colors.glass.background};
   backdrop-filter: blur(8px);
   border-radius: 20px;
-  padding: ${theme.spacing.lg};
+  padding: ${theme.spacing.lg} ${theme.spacing.md};
   transition: all ${theme.transitions.default};
   height: 100%;
   display: flex;
@@ -93,8 +103,8 @@ const SkillCategory = styled(motion.div)`
 `;
 
 const CategoryTitle = styled.h3`
-  font-size: clamp(1.5rem, 3vw, 1.75rem);
-  margin-bottom: ${theme.spacing.xl};
+  font-size: clamp(1.35rem, 2.3vw, 1.7rem);
+  margin-bottom: ${theme.spacing.md};
   color: ${theme.colors.light};
   display: flex;
   align-items: center;
@@ -120,10 +130,17 @@ const CategoryTitle = styled.h3`
   }
 `;
 
+const CategoryDescription = styled.p`
+  color: ${theme.colors.textLight};
+  font-size: 0.94rem;
+  line-height: 1.55;
+  margin-bottom: ${theme.spacing.lg};
+`;
+
 const SkillsList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${theme.spacing.md};
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${theme.spacing.sm};
   flex: 1;
   width: 100%;
 `;
@@ -132,21 +149,29 @@ const SkillItem = styled(motion.div)`
   display: flex;
   align-items: center;
   gap: ${theme.spacing.sm};
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  padding: ${theme.spacing.md};
-  border-radius: 12px;
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  font-weight: 500;
+  padding: 0.85rem 0.9rem;
+  border-radius: 10px;
   transition: all ${theme.transitions.default};
-  background: ${theme.colors.glass.card};
+  border: 1px solid ${theme.colors.glass.border};
+  background: linear-gradient(
+    135deg,
+    rgb(98 190 106 / 24%) 0%,
+    rgb(98 190 106 / 16%) 100%
+  );
+  flex: 1 1 calc(50% - ${theme.spacing.sm});
+  min-width: 135px;
 
   svg {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
     color: ${theme.colors.accent};
     transition: all ${theme.transitions.default};
   }
 
   &:hover {
     background: ${theme.colors.gradient.glass};
-    transform: translateX(5px);
+    transform: translateY(-2px);
     box-shadow: 0 4px 12px ${theme.colors.overlay.light};
 
     svg {
@@ -159,22 +184,25 @@ const SkillItem = styled(motion.div)`
 const skillCategories = [
   {
     title: "Frontend",
+    description: "Responsive and accessible interfaces built for conversion, performance, and product quality.",
     icon: <FaReact />,
     skills: [
-      { name: "React/Native", icon: <FaReact /> },
-      { name: "NextJS", icon: <SiTypescript /> },
+      { name: "React", icon: <FaReact /> },
+      { name: "React Native", icon: <FaReact /> },
+      { name: "Next.js", icon: <SiTypescript /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
       { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "Redux", icon: <SiRedux /> },
-      { name: "Django", icon: <SiDjango /> },
+      { name: "Redux Toolkit", icon: <SiRedux /> },
       { name: "Shopify", icon: <SiShopify /> },
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & Data",
+    description: "Scalable APIs and data models focused on reliability, security, and clean architecture.",
     icon: <FaNodeJs />,
     skills: [
       { name: "Node.js", icon: <FaNodeJs /> },
-      { name: "Es6", icon: <FaNodeJs /> },
+      { name: "Django", icon: <SiDjango /> },
       { name: "Python", icon: <SiPython /> },
       { name: "Supabase", icon: <SiSupabase /> },
       { name: "Prisma", icon: <SiPrisma /> },
@@ -182,15 +210,16 @@ const skillCategories = [
     ],
   },
   {
-    title: "DevOps",
+    title: "Cloud & Delivery",
+    description: "Modern deployment workflows using cloud services, automation, and production-ready tooling.",
     icon: <FaDocker />,
     skills: [
-      { name: "Git", icon: <FaGitAlt /> },
+      { name: "Git / GitHub", icon: <FaGitAlt /> },
+      { name: "CI/CD", icon: <FaDatabase /> },
       { name: "Azure", icon: <FaMicrosoft /> },
       { name: "AWS", icon: <FaAws /> },
       { name: "Railway", icon: <SiRailway /> },
       { name: "Docker", icon: <FaDocker /> },
-      { name: "CI/CD", icon: <FaDatabase /> },
     ],
   },
 ];
@@ -229,6 +258,14 @@ const Skills = () => {
       >
         Skills & Expertise
       </SectionTitle>
+      <SectionSubtitle
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        A recruiter-ready toolkit for building and shipping modern digital products across frontend, backend, and cloud.
+      </SectionSubtitle>
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -247,6 +284,7 @@ const Skills = () => {
                 <span aria-hidden="true">{category.icon}</span>
                 {category.title}
               </CategoryTitle>
+              <CategoryDescription>{category.description}</CategoryDescription>
               <SkillsList role="list" aria-label={`${category.title} skills`}>
                 {category.skills.map((skill, skillIndex) => (
                   <SkillItem
