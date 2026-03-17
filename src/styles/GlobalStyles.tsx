@@ -13,7 +13,7 @@ const globalStyles = css`
     --color-light: #8ad893;
     --color-text: #0f172a;
     --color-text-light: #4b5563;
-    --color-text-dark: #e3e3e3;
+    --color-text-dark: #4e4e4e;
     --body-bg: linear-gradient(160deg, #f0f4f8 0%, #e8edf3 55%, #dde4ec 100%);
     --container-main: rgba(255, 255, 255, 0.95);
     --glass-bg: rgba(255, 255, 255, 0.82);

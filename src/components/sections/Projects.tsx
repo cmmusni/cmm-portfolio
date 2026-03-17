@@ -159,7 +159,7 @@ const TechTag = styled.span`
 
   &:hover {
     background: ${theme.colors.gradient.accent};
-    color: ${theme.colors.textDark};
+    color: #fff;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px ${theme.colors.overlay.light};
   }
