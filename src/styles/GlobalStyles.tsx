@@ -13,14 +13,14 @@ const globalStyles = css`
     --color-light: #8ad893;
     --color-text: #0f172a;
     --color-text-light: #4b5563;
-    --color-text-dark: #1f2937;
+    --color-text-dark: #e3e3e3;
     --body-bg: linear-gradient(160deg, #f0f4f8 0%, #e8edf3 55%, #dde4ec 100%);
     --container-main: rgba(255, 255, 255, 0.95);
     --glass-bg: rgba(255, 255, 255, 0.82);
     --glass-border: rgba(17, 24, 39, 0.12);
     --glass-card: rgba(17, 24, 39, 0.06);
     --gradient-main: linear-gradient(135deg, #ffffff 0%, #f6f8fb 50%, #f0f4f8 100%);
-    --gradient-accent: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    --gradient-accent: linear-gradient(135deg, #62be6a 0%, #3f8f53 100%);
     --gradient-glass: linear-gradient(
       135deg,
       rgba(15, 23, 42, 0.05) 0%,
