@@ -95,6 +95,11 @@ const Nav = styled.nav`
     max-width: 1200px;
     margin: 0 auto;
     width: 90%;
+
+    @media (max-width: ${theme.breakpoints.md}) {
+      width: 94%;
+      padding: 0 ${theme.spacing.sm};
+    }
   }
 `;
 
@@ -153,8 +158,10 @@ const MobileNavLinks = styled(NavLinks)`
   a {
     display: block;
     width: 100%;
-    padding: ${theme.spacing.sm};
+    padding: 0.9rem 1rem;
     border-radius: 8px;
+    font-size: 1rem;
+    text-align: left;
   }
 `;
 
@@ -165,8 +172,8 @@ const MenuToggle = styled.button`
   border: 1px solid ${theme.colors.glass.border};
   padding: ${theme.spacing.xs} ${theme.spacing.sm};
   border-radius: 12px;
-  width: 40px !important;
-  height: 40px !important;
+  width: 44px !important;
+  height: 44px !important;
   font-size: 1.5rem !important;
   font-weight: 600;
   line-height: 1;
@@ -195,19 +202,47 @@ const MenuToggle = styled.button`
   }
 `;
 
+const MobileMenuBackdrop = styled.button<{ isOpen: boolean }>`
+  @media (max-width: ${theme.breakpoints.md}) {
+    position: fixed;
+    inset: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(1px);
+    opacity: ${(props) => (props.isOpen ? 1 : 0)};
+    pointer-events: ${(props) => (props.isOpen ? "auto" : "none")};
+    transition: opacity 0.2s ease;
+    z-index: 999;
+  }
+
+  @media (min-width: calc(${theme.breakpoints.md} + 1px)) {
+    display: none;
+  }
+`;
+
 const MobileNavPanel = styled.div<{ isOpen: boolean }>`
   @media (max-width: ${theme.breakpoints.md}) {
-    position: absolute;
-    top: calc(100% + ${theme.spacing.sm});
-    right: 5%;
-    width: min(240px, 92vw);
+    position: fixed;
+    top: calc(4.5rem + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%)
+      ${(props) => (props.isOpen ? "translateY(0)" : "translateY(-8px)")};
+    width: min(520px, calc(100vw - 1rem));
+    max-height: calc(100vh - 6rem);
+    overflow-y: auto;
     background: ${theme.colors.glass.background};
     border: 1px solid ${theme.colors.glass.border};
-    border-radius: 14px;
+    border-radius: 16px;
     backdrop-filter: blur(10px);
     padding: ${theme.spacing.sm};
     box-shadow: 0 10px 24px ${theme.colors.overlay.dark};
-    display: ${(props) => (props.isOpen ? "block" : "none")};
+    opacity: ${(props) => (props.isOpen ? 1 : 0)};
+    pointer-events: ${(props) => (props.isOpen ? "auto" : "none")};
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
     z-index: 1001;
   }
 
@@ -285,6 +320,24 @@ export const Layout = ({ children }: LayoutProps) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
@@ -336,6 +389,13 @@ export const Layout = ({ children }: LayoutProps) => {
             >
               {isMobileMenuOpen ? "✕" : "☰"}
             </MenuToggle>
+
+            <MobileMenuBackdrop
+              type="button"
+              isOpen={isMobileMenuOpen}
+              aria-label="Close mobile menu"
+              onClick={closeMobileMenu}
+            />
 
             <MobileNavPanel id="mobile-nav-panel" isOpen={isMobileMenuOpen}>
               <MobileNavLinks role="list" aria-label="Mobile navigation">
