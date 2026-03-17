@@ -264,7 +264,7 @@ const Skills = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        A recruiter-ready toolkit for building and shipping modern digital products across frontend, backend, and cloud.
+        A toolkit for building and shipping modern digital products across frontend, backend, and cloud.
       </SectionSubtitle>
       <motion.div
         variants={containerVariants}
