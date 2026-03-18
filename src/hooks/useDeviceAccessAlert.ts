@@ -47,21 +47,32 @@ export const useDeviceAccessAlert = () => {
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const screenSize = `${window.screen.width}x${window.screen.height}`;
 
-    fetch("/.netlify/functions/device-access-alert", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        deviceId,
-        path: window.location.href,
-        timezone,
-        language: navigator.language,
-        screen: screenSize,
-        platform: navigator.platform,
-        userAgent,
-      }),
-    })
+    const body = JSON.stringify({
+      deviceId,
+      path: window.location.href,
+      timezone,
+      language: navigator.language,
+      screen: screenSize,
+      platform: navigator.platform,
+      userAgent,
+    });
+
+    const headers = { "Content-Type": "application/json" };
+
+    // Try the Netlify endpoint first; fall back to the Vercel endpoint.
+    // This allows the same build to work on both platforms, including custom domains.
+    const sendAlert = () =>
+      fetch("/.netlify/functions/device-access-alert", { method: "POST", headers, body })
+        .then((res) => {
+          if (res.ok) return res;
+          // Netlify function not found — try Vercel
+          if (res.status === 404) {
+            return fetch("/api/device-access-alert", { method: "POST", headers, body });
+          }
+          return res;
+        });
+
+    sendAlert()
       .then((response) => {
         if (response.ok) {
           localStorage.setItem(ALERT_SENT_KEY, "1");

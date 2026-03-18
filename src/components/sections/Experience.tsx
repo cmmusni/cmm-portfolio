@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { theme } from "../../styles/theme";
 import { FaReact, FaNodeJs, FaFilePdf } from "react-icons/fa";
 import { computeDateDuration } from "../../shared/functions/computeDateDuration";
+import CliffordCV from "../../assets/clifford-cv.pdf";
 
 const ExperiencesSection = styled.section`
   min-height: 100vh;
@@ -257,11 +258,14 @@ const Experiences = () => {
         </ExperiencesContainer>
         <ExperiencesCVContainer>
           <ContactEmail
-            href="https://drive.google.com/file/d/13h-aEPaO1zvFSZAJBvLiGhzVvaWOqQbY/view"
+            href={CliffordCV}
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Clifford-Mark-Musni-CV.pdf"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            aria-label="Send me an email at cliffordmarkmusni@gmail.com"
+            aria-label="View Clifford's CV"
           >
             <FaFilePdf aria-hidden="true" />
             <span>View more</span>
