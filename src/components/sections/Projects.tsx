@@ -10,6 +10,7 @@ import PusoSpaze from "../../assets/puso-spaze.png";
 import Portionist from "../../assets/portionist.png";
 import Early7Cafe from "../../assets/early-7-cafe.png";
 import BrandMonitoring from "../../assets/brand-monitoring.png";
+import HOApp from "../../assets/hoapp.png";
 
 const ProjectsSection = styled.section`
   min-height: 100vh;
@@ -188,6 +189,22 @@ const ProjectLinks = styled.div`
 `;
 
 const projects = [
+  {
+    id: 0,
+    title: "HOApp",
+    description:
+      "A production-ready multi-tenant SaaS platform for HOA and condominium communities, featuring self-serve community creation, role-based access control, realtime features, and comprehensive HOA management tools.",
+    image: HOApp,
+    techStack: [
+      "React Native",
+      "Supabase",
+      "PostgreSQL",
+      "Row Level Security",
+      "Edge Functions",
+    ],
+    githubUrl: "https://github.com/cmmusni/hoapp",
+    liveUrl: "https://hoapp.net",
+  },
   {
     id: 1,
     title: "PUSO Spaze",
