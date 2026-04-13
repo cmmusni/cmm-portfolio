@@ -13,3 +13,6 @@ thumb
 sketch
 .vercel
 .env*.local
+
+dist/
+.netlify/
