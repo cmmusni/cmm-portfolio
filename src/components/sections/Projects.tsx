@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import { theme } from "../../styles/theme";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaFacebook } from "react-icons/fa";
 import MemeGen from "../../assets/memegen.png";
 import AGTGChurch from "../../assets/agtg-church.png";
 import IPLabs from "../../assets/ip-labs.png";
@@ -204,6 +204,7 @@ const projects = [
     ],
     githubUrl: "https://github.com/cmmusni/hoapp",
     liveUrl: "https://hoapp.net",
+    facebookUrl: "https://www.facebook.com/people/HOApp/61576472196862/",
   },
   {
     id: 1,
@@ -397,6 +398,17 @@ const Projects = () => {
                       <FaExternalLinkAlt aria-hidden="true" />
                       <span className="sr-only">Live site</span>
                     </a>
+                    {"facebookUrl" in project && project.facebookUrl && (
+                      <a
+                        href={project.facebookUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${project.title} Facebook page`}
+                      >
+                        <FaFacebook aria-hidden="true" />
+                        <span className="sr-only">Facebook page</span>
+                      </a>
+                    )}
                   </ProjectLinks>
                 </ProjectContent>
               </ProjectCard>
