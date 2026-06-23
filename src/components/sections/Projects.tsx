@@ -196,7 +196,8 @@ const projects = [
       "A production-ready multi-tenant SaaS platform for HOA and condominium communities, featuring self-serve community creation, role-based access control, realtime features, and comprehensive HOA management tools.",
     image: HOApp,
     techStack: [
-      "React Native",
+      "ReactJS",
+      "TypeScript",
       "Supabase",
       "PostgreSQL",
       "Row Level Security",
@@ -213,7 +214,7 @@ const projects = [
       "An AI-moderated anonymous community platform focused on psychological safety, positive reinforcement, and faith-based engagement.",
     image: PusoSpaze,
     techStack: [
-      "React Native",
+      "ReactJS",
       "TypeScript",
       "NativeWind",
       "Express",
@@ -229,7 +230,8 @@ const projects = [
     description: "AI-Powered Meal Planning & Nutrition Tracking Platform",
     image: Portionist,
     techStack: [
-      "React Native",
+      "ReactJS",
+      "TypeScript",
       "Express",
       "PostgreSQL",
       "Google Gemini LLM",
