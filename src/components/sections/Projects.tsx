@@ -13,6 +13,7 @@ import BrandMonitoring from "../../assets/brand-monitoring.png";
 import HOApp from "../../assets/hoapp.png";
 import ClogHeroes from "../../assets/clog-heroes.png";
 import PersonalInjuryClaims from "../../assets/personal-injury-claims.png";
+import Rightscape from "../../assets/rightscape.io.png";
 
 const ProjectsSection = styled.section`
   min-height: 100vh;
@@ -193,6 +194,20 @@ const ProjectLinks = styled.div`
 const projects = [
   {
     id: 0,
+    title: "Rightscape",
+    description:
+      "A social media music risk mitigation platform that audits, monitors, and clears unlicensed commercial music across all major social media platforms.",
+    image: Rightscape,
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+    ],
+    liveUrl: "https://rightscape.io",
+  },
+  {
+    id: 1,
     title: "Personal Injury Claims",
     description:
       "A lead generation website for personal injury claims in Scotland, connecting injured individuals with specialist Scottish solicitors for no-win-no-fee compensation claims.",
@@ -207,7 +222,7 @@ const projects = [
     liveUrl: "https://personal-injury-claims.pages.dev/",
   },
   {
-    id: 1,
+    id: 2,
     title: "Clog Heroes",
     description:
       "A professional plumbing service website for Fredericksburg, VA featuring service scheduling, 24/7 emergency support, and AI-powered customer engagement.",
@@ -222,7 +237,7 @@ const projects = [
     liveUrl: "https://trades-pilot-ai-clog-heroes.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "HOApp",
     description:
       "A production-ready multi-tenant SaaS platform for HOA and condominium communities, featuring self-serve community creation, role-based access control, realtime features, and comprehensive HOA management tools.",
@@ -240,7 +255,7 @@ const projects = [
     facebookUrl: "https://www.facebook.com/people/HOApp/61576472196862/",
   },
   {
-    id: 3,
+    id: 4,
     title: "PUSO Spaze",
     description:
       "An AI-moderated anonymous community platform focused on psychological safety, positive reinforcement, and faith-based engagement.",
@@ -257,7 +272,7 @@ const projects = [
     liveUrl: "https://www.puso-spaze.org",
   },
   {
-    id: 4,
+    id: 5,
     title: "Portionist",
     description: "AI-Powered Meal Planning & Nutrition Tracking Platform",
     image: Portionist,
@@ -273,7 +288,7 @@ const projects = [
     liveUrl: "https://portionist.netlify.app",
   },
   {
-    id: 5,
+    id: 6,
     title: "Early 7 Cafe",
     description:
       "A pre-order and POS web app for a coffee shop, where customers can browse the menu, schedule pickup, and pay via cash, QRPh, or GCash, while admins can manage incoming orders and update statuses in real time.",
@@ -291,7 +306,7 @@ const projects = [
     liveUrl: "https://early7cafe.vercel.app",
   },
   {
-    id: 6,
+    id: 7,
     title: "Brand Monitoring",
     description:
       "A platform for monitoring brand presence and reputation online.",
@@ -302,7 +317,7 @@ const projects = [
       "https://brand-monitoring-git-dasboard-and-pages-sparklabllc.vercel.app/",
   },
   {
-    id: 7,
+    id: 8,
     title: "All Glory to God Church Website",
     description: "A full-stack website for our church",
     image: AGTGChurch,
@@ -311,7 +326,7 @@ const projects = [
     liveUrl: "https://agtg-church.netlify.app",
   },
   {
-    id: 8,
+    id: 9,
     title: "MemeGen",
     description:
       "A fun e-commerce platform where users can choose a product and personalize it with a meme.",
@@ -321,7 +336,7 @@ const projects = [
     liveUrl: "https://meme-products.netlify.app",
   },
   {
-    id: 9,
+    id: 10,
     title: "IP Labs",
     description:
       "A front-end web application that analyze media content for trends, copyright compliance, or usage statistics.",
@@ -331,7 +346,7 @@ const projects = [
     liveUrl: "https://iplabs.netlify.app/",
   },
   {
-    id: 10,
+    id: 11,
     title: "App Tech Analysis",
     description:
       "A front-end web applicaition that track app performance, downloads, and market trends across different app stores.",
@@ -414,15 +429,17 @@ const Projects = () => {
                     ))}
                   </TechStack>
                   <ProjectLinks>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.title} source code on GitHub`}
-                    >
-                      <FaGithub aria-hidden="true" />
-                      <span className="sr-only">GitHub repository</span>
-                    </a>
+                    {"githubUrl" in project && project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View ${project.title} source code on GitHub`}
+                      >
+                        <FaGithub aria-hidden="true" />
+                        <span className="sr-only">GitHub repository</span>
+                      </a>
+                    )}
                     <a
                       href={project.liveUrl}
                       target="_blank"
