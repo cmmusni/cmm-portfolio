@@ -21,6 +21,8 @@ import {
   SiShopify,
   SiPrisma,
   SiRailway,
+  SiAstro,
+  SiCloudflare,
 } from "react-icons/si";
 
 const SkillsSection = styled.section`
@@ -190,6 +192,7 @@ const skillCategories = [
       { name: "React", icon: <FaReact /> },
       { name: "React Native", icon: <FaReact /> },
       { name: "Next.js", icon: <SiTypescript /> },
+      { name: "Astro", icon: <SiAstro /> },
       { name: "TypeScript", icon: <SiTypescript /> },
       { name: "JavaScript", icon: <SiJavascript /> },
       { name: "Redux Toolkit", icon: <SiRedux /> },
@@ -218,6 +221,7 @@ const skillCategories = [
       { name: "CI/CD", icon: <FaDatabase /> },
       { name: "Azure", icon: <FaMicrosoft /> },
       { name: "AWS", icon: <FaAws /> },
+      { name: "Cloudflare", icon: <SiCloudflare /> },
       { name: "Railway", icon: <SiRailway /> },
       { name: "Docker", icon: <FaDocker /> },
     ],
